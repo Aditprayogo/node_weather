@@ -5,7 +5,6 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const port = 3000
-
 const path = require('path')
 const hbs = require('hbs')
 
