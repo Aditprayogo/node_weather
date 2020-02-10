@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
+
 const port = 3000
 
 const path = require('path')
@@ -50,13 +53,26 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    res.send({
-        forecast: 'Jakarta',
-        location: 'Di indonesia',
-        address: req.query.address
-    })
-})
+    geocode(req.query.address, (err, { latitude, longitude, location }) => {
+        if (err) {
+            res.send({ err })
+        }
 
+        forecast(latitude, longitude, (err, forecastData) => {
+            if (err) {
+                res.send({ err })
+            }
+
+            res.send({
+                location,
+                forecast: forecastData,
+                address: req.query.address
+            })
+
+        })
+    })
+
+})
 
 
 app.get('', (req, res) => {

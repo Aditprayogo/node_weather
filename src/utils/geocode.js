@@ -12,10 +12,7 @@ const geocode = (address, callback) => {
             if (data.features.length === 0) {
                 callback('unable to find the location, try another search', undefined)
             } else {
-                callback(
-                    //error gk ada
-                    undefined,
-                    //data
+                callback(undefined,
                     {
                         latitude: data.features[0].center[1],
                         longitude: data.features[0].center[0],
@@ -33,6 +30,4 @@ const geocode = (address, callback) => {
 
 }
 
-module.exports = {
-    geocode: geocode
-};
+module.exports = geocode
