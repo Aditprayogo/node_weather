@@ -16,10 +16,11 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 //config express static 
 app.use(express.static(publicPathDir))
 
-
 //setup config for handlebars
 app.set('view engine', 'hbs')
 app.set('views', viewPath)
+
+// setup handle bars
 hbs.registerPartials(partialsPath)
 
 
@@ -52,7 +53,7 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    geocode(req.query.address, (err, { latitude, longitude, location }) => {
+    geocode(req.query.address, (err, { latitude, longitude, location } = {}) => {
         if (err) {
             res.send({ err })
         }

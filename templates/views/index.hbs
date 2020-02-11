@@ -22,22 +22,36 @@
     {{>header}}
 
     <div class="container">
-        <div class="row">
-            <div class="main-content">
-                <div class="col-md-12">
-                    <div class="text-center">
-
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8 mx-auto">
+                <div class="main-content">
+                    <div class="card">
+                        <div class="card-header">
+                            Weather information
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Region :</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="region">
+                                    </div>
+                                </div>
+                                <hr>
+                                <button type="submit" class="btn btn-primary mb-2 btn-block">Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="footer-content col-lg-12">
                 <hr>
-                {{>footer}}
+                <br>
+                <br>
+                <div class="footer-content">
+                    <footer>{{>footer}}</footer>
+                </div>
             </div>
         </div>
     </div>
-
-
 
 
 
