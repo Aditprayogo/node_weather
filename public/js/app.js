@@ -59,11 +59,3 @@ weatherForm.addEventListener('submit', async (e) => {
         })
 
 })
-
-const renderLoader = () => {
-    const markup =
-        `<div class="loader"></div>`
-
-
-
-}
