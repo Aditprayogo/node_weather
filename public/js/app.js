@@ -18,7 +18,7 @@ weatherForm.addEventListener('submit', async (e) => {
 
     loader.style.display = 'block';
 
-    await fetch(`http://localhost:3000/weather?address=${searchData}`)
+    await fetch(`/weather?address=${searchData}`)
         .then((res) => {
 
             res.json().then((data) => {
