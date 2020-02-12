@@ -6,12 +6,17 @@ const resultLoc = document.querySelector('.res-loc')
 const resultAddress = document.querySelector('.res-address')
 const resultForecast = document.querySelector('.res-for')
 const errorMsg = document.querySelector('.error-msg')
+const loader = document.querySelector('.loader')
+
+
 
 weatherForm.addEventListener('submit', async (e) => {
 
     e.preventDefault()
 
     const searchData = searchRegion.value
+
+    loader.style.display = 'block';
 
     await fetch(`http://localhost:3000/weather?address=${searchData}`)
         .then((res) => {
@@ -33,9 +38,14 @@ weatherForm.addEventListener('submit', async (e) => {
                     resultForecast.innerHTML = ''
 
 
+
                     resultLoc.insertAdjacentHTML('afterbegin', data.location)
                     resultAddress.insertAdjacentHTML('afterbegin', data.forecast)
                     resultForecast.insertAdjacentHTML('afterbegin', data.address)
+
+                    loader.style.display = 'none'
+
+
                 }
 
             }).catch((err) => {
@@ -49,3 +59,11 @@ weatherForm.addEventListener('submit', async (e) => {
         })
 
 })
+
+const renderLoader = () => {
+    const markup =
+        `<div class="loader"></div>`
+
+
+
+}
