@@ -5,6 +5,7 @@ const searchRegion = document.querySelector('#region')
 const resultLoc = document.querySelector('.res-loc')
 const resultAddress = document.querySelector('.res-address')
 const resultForecast = document.querySelector('.res-for')
+const errorMsg = document.querySelector('.error-msg')
 
 weatherForm.addEventListener('submit', async (e) => {
 
@@ -18,27 +19,33 @@ weatherForm.addEventListener('submit', async (e) => {
             res.json().then((data) => {
 
                 if (!data.address) {
-                    return console.log('Please provide the address')
+
+                    resultLoc.innerHTML = ''
+                    resultAddress.innerHTML = ''
+                    resultForecast.innerHTML = ''
+                    errorMsg.innerHTML = ''
+                    errorMsg.insertAdjacentHTML('afterbegin', 'Please Provide The address')
+
+                } else {
+                    errorMsg.innerHTML = ''
+                    resultLoc.innerHTML = ''
+                    resultAddress.innerHTML = ''
+                    resultForecast.innerHTML = ''
+
+
+                    resultLoc.insertAdjacentHTML('afterbegin', data.location)
+                    resultAddress.insertAdjacentHTML('afterbegin', data.forecast)
+                    resultForecast.insertAdjacentHTML('afterbegin', data.address)
                 }
-
-                resultLoc.innerHTML = ''
-                resultAddress.innerHTML = ''
-                resultForecast.innerHTML = ''
-
-
-                resultLoc.insertAdjacentHTML('afterbegin', data.location)
-                resultAddress.insertAdjacentHTML('afterbegin', data.forecast)
-                resultForecast.insertAdjacentHTML('afterbegin', data.address)
-
 
             }).catch((err) => {
 
-                console.log(err)
+                errorMsg.insertAdjacentHTML('afterbegin', err)
             })
 
         })
         .catch((err) => {
-            console.log(err)
+            errorMsg.insertAdjacentHTML('afterbegin', err)
         })
 
 })
