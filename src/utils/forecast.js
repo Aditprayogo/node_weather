@@ -20,7 +20,7 @@ const forecast = (latitude, longitude, callback) => {
 
                 callback(
                     undefined,
-                    res.data.daily.data[0].summary + ' It currently ' + data.temperature + ' degrees out.' + res.daily.data[0].temperatureHigh + ' With a low of ' + res.daily.data[0].temperatureLow + 'There is a ' + data.precipProbability + '% to rain'
+                    res.data.daily.data[0].summary + ' It currently ' + data.temperature + ' degrees out. There is a ' + data.precipProbability + '% to rain'
                 )
             }
 
